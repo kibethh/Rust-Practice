@@ -11,4 +11,20 @@
 // * Return a result from the function
 // * The Err variant should detail the reason why they cannot make a purchase
 
-fn main() {}
+struct Customer {
+    age: i32,
+}
+
+fn restrict_purchase(customer: &Customer) -> Result<(), String> {
+    if customer.age < 21 {
+        Err("Not allowed to make purchases".to_owned())
+    } else {
+        Ok(())
+    }
+}
+
+fn main() {
+    let kibet = Customer { age: 16 };
+    let purchased = restrict_purchase(&kibet);
+    println!("{:?}", purchased)
+}
