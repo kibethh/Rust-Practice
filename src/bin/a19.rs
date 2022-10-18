@@ -12,5 +12,31 @@
 //
 // Notes:
 // * Use a HashMap for the furniture store stock
+use std::collections::HashMap;
 
-fn main() {}
+fn main() {
+    let mut store = HashMap::new();
+    store.insert("chairs", 5);
+    store.insert("beds", 3);
+    store.insert("tables", 2);
+    store.insert("couches", 0);
+
+    let mut total_number = 0;
+    for (item, number) in store.iter() {
+        total_number += number;
+        let stock_count = if number == &0 {
+            "out of stock".to_owned()
+        } else {
+            // Just like println but doesn't print instantly. Saves it into a string
+            format!("{:?}", number)
+        };
+
+        println!("Item: {:?} stock={:?}", item, stock_count);
+
+        match number {
+            0 => println!("{:?} are out of stock!", item),
+            _ => println!("{:?} are: {:?} in store", item, number),
+        };
+    }
+    println!("total items: {:?}", total_number);
+}
