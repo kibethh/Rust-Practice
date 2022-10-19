@@ -8,4 +8,11 @@
 // * (OPTIONAL) Read the documentation section `Formatting and Parsing`
 //   for examples on how to create custom time formats
 
-fn main() {}
+use chrono::prelude::*;
+
+fn main() {
+    let utc: DateTime<Utc> = Utc::now(); // e.g. `2014-11-28T12:45:59.324310806Z`
+    let local: DateTime<Local> = Local::now(); // e.g. `2014-11-28T21:45:59.324310806+09:00`
+    println!("{}", local.format("%Y-%m-%d %H:%M:%S").to_string());
+    println!("{}", utc.format("%Y-%m-%d %H:%M:%S").to_string())
+}
