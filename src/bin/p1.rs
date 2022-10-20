@@ -196,6 +196,7 @@ fn run_program() -> Option<()> {
         // Display the menu
         MainMenu::show();
         let input = get_input()?;
+        // Make a choice based on input
         match MainMenu::from_str(input.as_str()) {
             Some(MainMenu::AddBill) => menu::add_bill(&mut bills),
             Some(MainMenu::ViewBill) => menu::view_bills(&bills),
@@ -203,7 +204,6 @@ fn run_program() -> Option<()> {
             Some(MainMenu::UpdateBill) => menu::update_bill(&mut bills),
             None => break,
         }
-        // Make a choice based on input
     }
     None
 }
